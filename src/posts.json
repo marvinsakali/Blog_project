@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Getting Started with Django",
+    "content": "Django is a powerful Python web framework that helps you build web applications quickly.\r\n\r\nIt comes with built-in features like authentication, ORM, and an admin panel.",
+    "user_id": 1
+  },
+  {
+    "title": "Why Learn JavaScript in 2026",
+    "content": "JavaScript remains one of the most important programming languages for web development.\r\n\r\nIt powers interactive websites and works alongside frameworks like React and Next.js.",
+    "user_id": 2
+  },
+  {
+    "title": "Introduction to GIS",
+    "content": "Geographic Information Systems (GIS) allow us to analyze spatial data and visualize it on maps.\n\nGIS is widely used in urban planning, agriculture, and environmental monitoring.",
+    "user_id": 1
+  },
+  {
+    "title": "Working with APIs in Python",
+    "content": "APIs allow applications to communicate with each other.\r\n\r\nIn Python, you can use the requests library to fetch and send data easily.",
+    "user_id": 2
+  },
+  {
+    "title": "Top VS Code Extensions for Developers",
+    "content": "VS Code has a rich ecosystem of extensions.\r\n\r\nPopular ones include Python, Prettier, Live Server, and GitLens to boost productivity.",
+    "user_id": 1
+  },
+  {
+    "title": "Understanding Databases",
+    "content": "Databases are used to store and manage data efficiently.\r\n\r\nCommon types include relational databases like MySQL and PostgreSQL, and NoSQL databases like MongoDB.",
+    "user_id": 2
+  },
+  {
+    "title": "Beginner Guide to Machine Learning",
+    "content": "Machine learning involves training models to learn patterns from data.\r\n\r\nIt is used in recommendation systems, fraud detection, and image recognition.",
+    "user_id": 1
+  },
+  {
+    "title": "How to Use Git and GitHub",
+    "content": "Git is a version control system that helps track code changes.\r\n\r\nGitHub allows you to store your code online and collaborate with others.",
+    "user_id": 2
+  },
+  {
+    "title": "Improving Your Coding Skills",
+    "content": "Practice is key to becoming a better programmer.\r\n\r\nWork on projects, read code, and challenge yourself with coding problems regularly.",
+    "user_id": 1
+  },
+  {
+    "title": "Introduction to Data Analysis",
+    "content": "Data analysis involves cleaning, transforming, and interpreting data.\r\n\r\nTools like Python, Pandas, and SQL are commonly used in this field.",
+    "user_id": 2
+  }
+]

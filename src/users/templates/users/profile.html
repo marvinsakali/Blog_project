@@ -1,0 +1,91 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg border-0 rounded-4 p-4">
+
+                <!-- Profile Header -->
+                <div class="text-center mb-4 position-relative">
+
+                    <!-- Avatar -->
+                    <img id="avatarPreview"
+                         src="{{ user.profile.image.url }}"
+                         class="rounded-circle shadow"
+                         style="width:140px;height:140px;object-fit:cover;">
+
+                    <!-- Edit Icon -->
+                    <label for="id_image" class="edit-avatar">
+                        ✎
+                    </label>
+
+                </div>
+
+                <div class="text-center mb-4">
+                    <h3 class="mb-1">{{ user.username }}</h3>
+                    <p class="text-muted">{{ user.email }}</p>
+                </div>
+
+                <hr>
+
+                <!-- Update Form -->
+                <form method="POST" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <fieldset class="mb-3">
+                        <legend class="border-bottom mb-3">
+                            Account Info
+                        </legend>
+
+                        {{ u_form|crispy }}
+                    </fieldset>
+
+                    <fieldset class="mb-3">
+                        <legend class="border-bottom mb-3">
+                            Profile Picture
+                        </legend>
+
+                        {{ p_form|crispy }}
+                    </fieldset>
+
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-lg">
+                            Save Changes
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Avatar Preview Script -->
+<script>
+
+document.getElementById("id_image").onchange = function(evt) {
+
+    const [file] = this.files;
+
+    if (file) {
+        document.getElementById("avatarPreview").src =
+            URL.createObjectURL(file);
+    }
+
+};
+
+</script>
+
+
+
+
+
+{% endblock content %}

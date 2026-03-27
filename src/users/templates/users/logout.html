@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+    <div class="card text-center shadow-sm p-4">
+        <div class="card-body">
+            <h3 class="card-title mb-3">You have logged out</h3>
+            <p class="card-text text-muted mb-4">
+                Thank you for visiting! You can log in again to continue.
+            </p>
+            <a href="{% url 'login' %}" class="btn btn-primary">Login Again</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

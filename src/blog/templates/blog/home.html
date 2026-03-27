@@ -1,0 +1,69 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-light py-5 mb-4">
+    <div class="container text-center">
+        <h1 class="display-4 font-weight-bold">Welcome to Blog</h1>
+        <p class="lead text-muted">
+            Discover stories, insights, and ideas from our community.
+        </p>
+    </div>
+</section>
+
+<div class="container">
+
+    <div class="row">
+
+        {% for post in posts %}
+        <div class="col-md-6 col-lg-4 mb-4">
+
+            <div class="card h-100 shadow-sm border-0 blog-card">
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        <a href="{% url 'blog-home' %}" class="text-dark font-weight-bold">
+                            {{ post.title }}
+                        </a>
+                    </h5>
+
+                    <p class="card-text text-muted">
+                        {{ post.content|truncatewords:25 }}
+                    </p>
+
+                </div>
+
+                <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+
+                    <div class="d-flex align-items-center">
+                        <!-- Author Profile Image -->
+                        <img src="{{ post.author.profile.image.url }}" 
+                            alt="{{ post.author.username }}'s profile picture" 
+                            class="rounded-circle me-2" 
+                            style="width:35px; height:35px; object-fit:cover;">
+                        
+                        <small class="text-muted ml-2">
+                            By 
+                            <a href="#" class="text-decoration-none">
+                                {{ post.author }}
+                            </a>
+                        </small>
+                    </div>
+
+                    <small class="text-muted">
+                        {{ post.date_posted|date:"M d, Y" }}
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock content %}
