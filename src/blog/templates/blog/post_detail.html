@@ -1,0 +1,73 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <!-- Post Title -->
+                    <h2 class="card-title font-weight-bold mb-4">
+                        {{ object.title }}
+                    </h2>
+
+                    <!-- Author Info -->
+                    <div class="d-flex align-items-center mb-3">
+
+                        <img src="{{ object.author.profile.image.url }}" 
+                             alt="{{ object.author.username }} profile" 
+                             class="rounded-circle mr-2"
+                             style="width:45px; height:45px; object-fit:cover;">
+
+                        <div>
+                            <small class="text-muted">
+                                By <strong> <a href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a></strong>
+                            </small>
+                            <br>
+                            <small class="text-muted">
+                                {{ object.date_posted|date:"F d, Y" }}
+                            </small>
+                        </div>
+                           {% if object.author == user %}
+                                <div class="d-flex justify-content-end gap-2 mt-3 ml-2">
+
+                                    <!-- Update Button -->
+                                    <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-secondary mt-1 mb-1 mr-2">
+                                        Update
+                                    </a>
+
+                                    <!-- Delete Button -->
+                                    <a href="{% url 'post-delete' object.id %}" class="btn  btn-sm btn-secondary btn-danger mt-1 mb-1">
+                                        Delete
+                                    </a>
+
+                                </div>
+                            {% endif %}
+                        
+                        
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Post Content -->
+                    <p class="card-text text-dark" >
+                        {{ object.content }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}
