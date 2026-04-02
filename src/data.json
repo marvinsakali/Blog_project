@@ -1,0 +1,237 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$i5lpiV2QuRoQChzax1k3Wm$xz5b6Og0lTHo5qvtfJkexeuRY7G4RYLSkxSntXPGPXg=",
+      "last_login": "2026-03-28T09:05:22.160Z",
+      "is_superuser": true,
+      "username": "MarvinSakali",
+      "first_name": "",
+      "last_name": "",
+      "email": "marvinsakali09@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-03-16T16:08:25.950Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$FxvEwUzwY4QD6xQU2Jv3t4$kPfY8RDJcBgzlu7kEDfuxqtKx8ZAvhApNPrO35cc6Oc=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "Mercy",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-16T17:09:55.599Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$7e97oMCEzSgpveO63d8IF9$jZYcxNiBoxUIyEzHubK7rQvMpHax7n9r2gPRou0jwII=",
+      "last_login": "2026-03-28T09:03:40.699Z",
+      "is_superuser": false,
+      "username": "marv",
+      "first_name": "",
+      "last_name": "",
+      "email": "marvinsakali@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-17T09:00:29.697Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$rliMtzZ4K55JssfwngE6by$ei5sBFt2mQTW6UfxIgA9VLDZ7xy5DkIvOaieyxV/KuA=",
+      "last_login": "2026-03-26T15:50:47.519Z",
+      "is_superuser": false,
+      "username": "testuser10",
+      "first_name": "",
+      "last_name": "",
+      "email": "test.user@comp.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-26T15:50:35.800Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$oZSjWkqHtmSYkv9pYtekFJ$WdZajtZoLzjEIM32wg8EBJxLjIWgRSi9jbPE1ocGAQU=",
+      "last_login": "2026-03-28T10:41:31.104Z",
+      "is_superuser": false,
+      "username": "test10",
+      "first_name": "",
+      "last_name": "",
+      "email": "test@blog.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-26T16:07:30.698Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.profile",
+    "pk": 1,
+    "fields": { "user": 1, "image": "profile_pics/Geopalooza_-10_xqT28CJ.jpg" }
+  },
+  {
+    "model": "users.profile",
+    "pk": 2,
+    "fields": { "user": 2, "image": "default.jpg" }
+  },
+  {
+    "model": "users.profile",
+    "pk": 3,
+    "fields": { "user": 3, "image": "default.jpg" }
+  },
+  {
+    "model": "users.profile",
+    "pk": 4,
+    "fields": { "user": 4, "image": "profile_pics/prof.jpg" }
+  },
+  {
+    "model": "users.profile",
+    "pk": 5,
+    "fields": { "user": 5, "image": "profile_pics/Geopalooza_-10_Le91viR.jpg" }
+  },
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "title": "Post 1",
+      "content": "My first post",
+      "date_posted": "2026-03-16T16:20:55.572Z",
+      "author": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "title": "Post2",
+      "content": "My second post",
+      "date_posted": "2026-03-16T16:22:03.209Z",
+      "author": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "title": "Getting Started with Django",
+      "content": "Django is a powerful Python web framework that helps you build web applications quickly.\n\nIt comes with built-in features like authentication, ORM, and an admin panel.",
+      "date_posted": "2026-03-25T19:17:38.810Z",
+      "author": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 4,
+    "fields": {
+      "title": "Why Learn JavaScript in 2026",
+      "content": "JavaScript remains one of the most important programming languages for web development.\n\nIt powers interactive websites and works alongside frameworks like React and Next.js.",
+      "date_posted": "2026-03-25T19:17:39.002Z",
+      "author": 2
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 5,
+    "fields": {
+      "title": "Introduction to GIS",
+      "content": "Geographic Information Systems (GIS) allow us to analyze spatial data and visualize it on maps.\n\nGIS is widely used in urban planning, agriculture, and environmental monitoring.",
+      "date_posted": "2026-03-25T19:17:39.180Z",
+      "author": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 6,
+    "fields": {
+      "title": "Working with APIs in Python",
+      "content": "APIs allow applications to communicate with each other.\n\nIn Python, you can use the requests library to fetch and send data easily.",
+      "date_posted": "2026-03-25T19:17:39.336Z",
+      "author": 2
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 7,
+    "fields": {
+      "title": "Top VS Code Extensions for Developers",
+      "content": "VS Code has a rich ecosystem of extensions.\n\nPopular ones include Python, Prettier, Live Server, and GitLens to boost productivity.",
+      "date_posted": "2026-03-25T19:17:39.495Z",
+      "author": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 8,
+    "fields": {
+      "title": "Understanding Databases",
+      "content": "Databases are used to store and manage data efficiently.\n\nCommon types include relational databases like MySQL and PostgreSQL, and NoSQL databases like MongoDB.",
+      "date_posted": "2026-03-25T19:17:39.624Z",
+      "author": 2
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 9,
+    "fields": {
+      "title": "Beginner Guide to Machine Learning",
+      "content": "Machine learning involves training models to learn patterns from data.\n\nMachine learning (ML) is no longer just for tech experts—it’s a skill anyone can start learning today. At its core, ML teaches computers to learn from data, recognize patterns, and make predictions without explicit programming. From recommending movies to detecting spam emails, machine learning powers many tools we use every day.\n\nWhy Learn Machine Learning?\n\nLearning ML opens doors to solving real-world problems creatively. It’s not just a career booster—it helps you automate tasks, analyze data, and build innovative projects. Even beginners can start small and gradually grow their skills.\n\nGetting Started as a Beginner\n\nStart with the basics: understand supervised vs. unsupervised learning, explore datasets, and experiment with simple models. Tools like Python, Scikit-learn, and Google Colab make it easy to practice and see real-time results.\n\nTips for Progress\n\nExpect mistakes—they are part of learning. Begin with simple algorithms like linear regression or decision trees before moving to more complex models like neural networks. Consistent practice and curiosity are your best guides.\n\nMachine learning is everywhere, shaping industries and daily life. Dive in today, experiment with projects, and let your journey from beginner to machine learning enthusiast begin!",
+      "date_posted": "2026-03-25T19:17:39.746Z",
+      "author": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 10,
+    "fields": {
+      "title": "How to Use Git and GitHub",
+      "content": "Git is a version control system that helps track code changes.\n\nGitHub allows you to store your code online and collaborate with others.",
+      "date_posted": "2026-03-25T19:17:39.924Z",
+      "author": 2
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 11,
+    "fields": {
+      "title": "Improving Your Coding Skills",
+      "content": "Practice is key to becoming a better programmer.\n\nWork on projects, read code, and challenge yourself with coding problems regularly.",
+      "date_posted": "2026-03-25T19:17:40.046Z",
+      "author": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 12,
+    "fields": {
+      "title": "Introduction to Data Analysis",
+      "content": "Data analysis involves cleaning, transforming, and interpreting data.\n\nTools like Python, Pandas, and SQL are commonly used in this field.",
+      "date_posted": "2026-03-25T19:17:40.224Z",
+      "author": 2
+    }
+  }
+]

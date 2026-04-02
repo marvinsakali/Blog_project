@@ -18,36 +18,55 @@
 <body>
     <header class="site-header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand mr-4" href="/">Blog</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarToggle">
-                    <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-                        <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+                <div class="container">
+                    <a class="navbar-brand mr-4" href="/">Blog</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarToggle">
+                        <div class="navbar-nav mr-auto">
+                            <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+                            <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+                        </div>
+
+                        {% if user.is_authenticated %}
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item dropdown no-arrow">
+                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="mr-2 d-none d-lg-inline text-gray-200 small">{{ user.username }}</span>
+                                        <img class="img-profile rounded-circle" style="width:30px;height:30px;object-fit:cover;"src="{{user.profile.image.url}}">
+                                    </a>
+
+                                    <!-- Dropdown - User Information -->
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                        aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="{% url 'profile-create' %}">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Profile
+                                        </a>
+                                      
+                                        <div class="dropdown-divider"></div>
+                                        <form method="POST" action="{% url 'logout' %}">
+                                            {% csrf_token %}
+                                            <button class="dropdown-item" type="submit">
+                                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                Logout
+                                            </button>
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        {% else %}
+                            <div class="navbar-nav">
+                                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                            </div>
+                        {% endif %}
                     </div>
-                    {% if user.is_authenticated %}
-                        <div class="navbar-nav">
-                            <a class=" nav-item nav-link" href="{% url 'post-create' %}">Create</a>
-                            <a class="nav-item nav-link" href="{% url 'profile-create' %}">Profile</a>
-                            <form method="POST" action="{% url 'logout' %}" style="display: inline;">
-                                {% csrf_token %}
-                                <button class= "btn btn-outline-info ml-2" type="submit" class="btn btn-link nav-link p-1" >
-                                    Logout
-                                </button>
-                            </form>
-                        </div>
-                    {% else %}
-                        <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-                        </div>
-                    {% endif %}
                 </div>
-            </div>
-        </nav>
+            </nav>
     </header>
 
     <main role="main" class="container mt-5 pt-4">
