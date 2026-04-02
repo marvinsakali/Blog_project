@@ -1,5 +1,5 @@
 body {
-  background: #fafafa;
+  background: #F8F8F8;
   color: #f8f8f8;
   margin-top: 5rem;
   font-family: "DM Sans", sans-serif;
@@ -17,7 +17,7 @@ ul {
 /* NAVBAR */
 
 .bg-steel {
-  background-color: #032946;
+  background-color: #11558a;
 }
 
 .site-header .navbar-nav .nav-link {
@@ -207,3 +207,36 @@ form textarea:focus {
     background:#0b5ed7;
 }
 
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #E4E4E4;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  color: #0A1F44;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #333333;
+  line-height: 1.5;
+}
+
+.card a.button {
+  display: inline-block;
+  background-color: #007BFF;
+  color: #FFFFFF;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.card a.button:hover {
+  background-color: #800020;
+}
