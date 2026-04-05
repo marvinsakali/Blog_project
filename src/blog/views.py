@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post, Category
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -9,7 +9,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
     )
-
+from .forms import PostForm
 
 context = {
     'posts': Post.objects.all()
@@ -49,19 +49,38 @@ class PostDetailView(DetailView):
     context_object_name = 'posts'
 
 
+class AddCategoryView(LoginRequiredMixin, CreateView):
+    model = Category
+    fields = '__all__'
+    template_name = 'blog/add_category.html'
+
+    # sets the author to current signed in user when submitted
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+def CategoryView(request, cat):
+    category_posts = Post.objects.filter(category=cat.replace('-', ' '))
+    context = {'cat': cat.title().replace('-', ' '),
+               'category_posts': category_posts}
+    return render(request, 'blog/category.html', context)
+
+
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
+    form_class = PostForm
     template_name = 'blog/post_form.html'
 
+    # sets the author to current signed in user when submitted
     def form_valid(self, form):
-        form.instance.author = self.requets.user
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 
 class PostUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    form_class = PostForm
     template_name = 'blog/post_form.html'
 
     def form_valid(self, form):

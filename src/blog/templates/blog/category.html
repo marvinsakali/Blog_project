@@ -5,8 +5,8 @@
 <header class="py-5 bg-light border-bottom mb-4">
   <div class="container">
     <div class="text-center my-4">
-      <h1 class="fw-bolder">Welcome to Blog</h1>
-      <p class="lead mb-0">Discover stories, insights and ideas</p>
+      <h1 class="fw-bolder">{{cat}}</h1>
+      <p class="lead mb-0">Discover stories, insights and ideas in {{cat|slugify}}</p>
     </div>
   </div>
 </header>
@@ -15,86 +15,24 @@
   <div class="row">
     <div class="col-lg-8">
 
-      {% if posts %}
+      {% if category_posts %}
 
-      <!-- Featured Post -->
-      <div class="card mb-4 shadow-sm border-0">
-
-        <a href="{% url 'post-detail' posts.0.pk %}">
-          <img
-            class="card-img-top"
-            src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
-            alt="..."
-          />
-        </a>
-
-        <div class="card-body">
-
-          <div class="small text-muted">
-            {{ posts.0.date_posted|date:"M d, Y" }}
-          </div>
-
-          <h2 class="card-title">
-            <a
-              href="{% url 'post-detail' posts.0.pk %}"
-              class="text-dark text-decoration-none"
-            >
-              {{ posts.0.title }}
-            </a>
-          </h2>
-
-          <p class="card-text">
-            {{ posts.0.content|truncatewords:40|safe }}
-          </p>
-
-          <a class="btn btn-primary" href="{% url 'post-detail' posts.0.pk %}">
-            Read more →
-          </a>
-
-        </div>
-
-        <div class="card-footer bg-white border-0 d-flex justify-content-between">
-
-          <div class="d-flex align-items-center">
-
-            <img
-              src="{{ posts.0.author.profile.image.url }}"
-              class="rounded-circle me-2"
-              style="width:35px; height:35px; object-fit:cover;"
-            />
-
-            <small class="text-muted">
-              By
-              <a href="{% url 'user-posts' posts.0.author.username %}">
-                {{ posts.0.author }}
-              </a>
-            </small>
-
-          </div>
-
-        </div>
-
-      </div>
-
+      
       <!-- Other posts -->
       <div class="row">
 
-        {% for post in posts|slice:"1:" %}
+        {% for post in category_posts %}
 
         <div class="col-lg-6">
 
           <div class="card mb-4 shadow-sm border-0">
 
             <a href="{% url 'post-detail' post.pk %}">
-              {% if post.image %}
-              <img src="{{post.image.url}}" alt="" class="card-img-top">
-              {% else %}
               <img
                 class="card-img-top"
                 src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
                 alt="..."
               />
-              {% endif %}
             </a>
 
             <div class="card-body">
@@ -103,10 +41,8 @@
                 {{ post.date_posted|date:"M d, Y" }}
               </div>
               <div>
-                <a href="{% url 'category' post.category %}">
-                  <span  class="btn btn-outline-info btn-sm tiny-btn">{{ post.category}}</span>
-                  </a>
-                </div>
+                  <span class="btn btn-outline-info btn-sm tiny-btn">{{ post.category }}</span>
+              </div>
               <h2 class="card-title h5">
                 <a
                   href="{% url 'post-detail' post.pk %}"
