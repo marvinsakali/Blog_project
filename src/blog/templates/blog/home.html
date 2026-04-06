@@ -87,7 +87,11 @@
 
             <a href="{% url 'post-detail' post.pk %}">
               {% if post.image %}
-              <img src="{{post.image.url}}" alt="" class="card-img-top">
+              <img src="{{post.image.url}}" 
+              alt="..." 
+              class="card-img-top" 
+              width="750" 
+              height="350">
               {% else %}
               <img
                 class="card-img-top"
@@ -103,7 +107,7 @@
                 {{ post.date_posted|date:"M d, Y" }}
               </div>
               <div>
-                <a href="{% url 'category' post.category %}">
+                <a href="{% url 'category' post.category|slugify %}">
                   <span  class="btn btn-outline-info btn-sm tiny-btn">{{ post.category}}</span>
                   </a>
                 </div>

@@ -1,73 +1,66 @@
 {% extends 'blog/base.html' %}
 {% block content %}
+<!-- Featured Image Header -->
+<div class="position-relative">
 
-<!-- Page content-->
+    <img src="https://dummyimage.com/1600x500/ced4da/6c757d.jpg"
+         class="w-100 "
+         style="height:px; object-fit:cover;"
+         alt="Post Image">
+
+    <!-- Overlay -->
+    <div class="position-absolute w-100 h-100 d-flex align-items-center"
+         style="top:0; left:0; background:rgba(0,0,0,0.4);">
+
+        <div class="container text-white">
+            <h1 class="fw-bolder">
+                {{ object.title }}
+            </h1>
+
+                     
+
+            <div class="d-flex align-items-center mt-3">
+
+                <img src="{{ object.author.profile.image.url }}"
+                     class="rounded-circle mr-2"
+                     style="width:40px;height:40px;object-fit:cover;">
+
+                <div>
+                    Posted on {{ object.date_posted|date:"F d, Y" }} by
+                    <a href="{% url 'user-posts' object.author.username %}" class="text-white">
+                        {{ object.author }}
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Post Content -->
 <div class="container mt-5">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 mx-auto">
 
-            <!-- Post content-->
-            <article>
+            {% if object.author == user %}
+            <div class="mb-3">
+                <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-outline-secondary">
+                    Update
+                </a>
 
-                <!-- Post header-->
-                <header class="mb-4">
+                <a href="{% url 'post-delete' object.id %}" class="btn btn-sm btn-danger">
+                    Delete
+                </a>
+            </div>
+            {% endif %}
 
-                    <!-- Post title-->
-                    <h1 class="fw-bolder mb-1">
-                        {{ object.title }}
-                    </h1>
-
-                    <!-- Author + Date -->
-                     <div class="mb-2">
-                        <small class="btn btn-outline-info btn-sm px-2" >{{ object.category }}</small>
-                    </div>
-                    <div class="d-flex align-items-center text-muted fst-italic mb-2">
-
-                        <img src="{{ object.author.profile.image.url }}"
-                             class="rounded-circle me-2"
-                             style="width:30px;height:30px;object-fit:cover;">
-
-                        <div class="ml-2">
-                            Posted on {{ object.date_posted|date:"F d, Y" }} by
-                            <a href="{% url 'user-posts' object.author.username %}">
-                                {{ object.author }}
-                            </a>
-                        </div>
-
-                    </div>
-                     
-                    <hr/>
-                    {% if object.author == user %}
-                    <div class="mb-2">
-                        <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-outline-secondary">
-                            Update
-                        </a>
-
-                        <a href="{% url 'post-delete' object.id %}" class="btn btn-sm btn-danger">
-                            Delete
-                        </a>
-                    </div>
-                    
-                   
-                    {% endif %}
-
-                </header>
-
-                <!-- Featured Image -->
-                <figure class="mb-4">
-                    <img class="img-fluid rounded"
-                         src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
-                         alt="Post Image">
-                </figure>
-
-                <!-- Post content (HTML enabled) -->
-                <section class="mb-5 post-content">
-
-                    {{ object.content|safe }}
-
-                </section>
-
-            </article>
+            <section class="post-content">
+                {{ object.content|safe }}
+            </section>
 
         </div>
     </div>
