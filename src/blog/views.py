@@ -10,6 +10,8 @@ from django.views.generic import (
     DeleteView
     )
 from .forms import PostForm
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 context = {
     'posts': Post.objects.all()
@@ -32,12 +34,19 @@ class PostListView(ListView):
     paginate_by = 6
 
 
+def LikeView(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('post-detail', args=[str(pk)]))
+
+
 class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
     paginate_by = 4
 
+    # gets posts belonging to one user
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-date_posted')
@@ -46,7 +55,16 @@ class UserPostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
-    context_object_name = 'posts'
+    # context_object_name = 'posts'
+
+    # adds the no fo likes a post has
+    def get_context_data(self, *args, **kwargs):
+        # gets the post from db
+        post = get_object_or_404(Post, id=self.kwargs['pk'])
+        context = super(PostDetailView, self).get_context_data(*args, **kwargs)
+        total_likes = post.total_likes()
+        context['total_likes'] = total_likes
+        return context
 
 
 class AddCategoryView(LoginRequiredMixin, CreateView):
