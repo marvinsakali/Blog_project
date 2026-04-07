@@ -36,7 +36,14 @@ class PostListView(ListView):
 
 def LikeView(request, pk):
     post = get_object_or_404(Post, id=request.POST.get('post_id'))
-    post.likes.add(request.user)
+    liked = False
+    # check whether user has liked the post
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked
+    else:
+        post.likes.add(request.user)
+        liked = True
     return HttpResponseRedirect(reverse('post-detail', args=[str(pk)]))
 
 
@@ -63,7 +70,12 @@ class PostDetailView(DetailView):
         post = get_object_or_404(Post, id=self.kwargs['pk'])
         context = super(PostDetailView, self).get_context_data(*args, **kwargs)
         total_likes = post.total_likes()
+        liked = False
+        if post.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        
         context['total_likes'] = total_likes
+        context['liked'] = liked
         return context
 
 
